@@ -1,6 +1,6 @@
 ﻿namespace ProductApi.Model
 {
-    public class Shop
+    public class Porducts
     {
         public Guid id { get; set; }
         public string name { get; set; }
