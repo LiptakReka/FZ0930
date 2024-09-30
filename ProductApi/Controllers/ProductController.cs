@@ -28,5 +28,15 @@ namespace ProductApi.Controllers
         {
             return await _context.products.ToListAsync();
         }
+
+        //post
+        [HttpPost]
+        public async Task<ActionResult<IEnumerable<ProductApi.Model.Porducts>>> PostProducts(Porducts products)
+        {
+            products.id = Guid.NewGuid();
+            _context.products.Add(products);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("Getproducts", new { id = products.id }, products);
+        }
     }
 }
