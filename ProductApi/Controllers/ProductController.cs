@@ -15,9 +15,9 @@ namespace ProductApi.Controllers
     public class ProductController : ControllerBase
     {
         [HttpGet]
-        public string Get()
+        public object Get()
         {
-            return ("Hello");
+            return new { result = "Hello" };
         }
     }
 }
