@@ -8,16 +8,25 @@ using Microsoft.EntityFrameworkCore;
 using ProductApi.Data;
 using ProductApi.Model;
 
+
 namespace ProductApi.Controllers
 {
     [Route("[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
-        [HttpGet]
-        public object Get()
+        private readonly AppDbContext _context;
+
+        public ProductController(AppDbContext context)
         {
-            return new { result = "Hello" };
+            _context = context;
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ProductApi.Model.Porducts>>> Getproducts()
+        {
+            return await _context.products.ToListAsync();
         }
     }
 }
